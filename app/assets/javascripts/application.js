@@ -4,6 +4,12 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery
 //= require jquery_ujs
+//= require bootstrap/bootstrap-alerts
+//= require bootstrap/bootstrap-dropdown
+//= require bootstrap/bootstrap-modal
+//= require bootstrap/bootstrap-twipsy
+//= require bootstrap/bootstrap-popover
+//= require bootstrap/bootstrap-scrollspy
+//= require bootstrap/bootstrap-tabs
 //= require_tree .

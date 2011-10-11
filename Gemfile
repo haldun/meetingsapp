@@ -31,6 +31,8 @@ gem 'dalli'
 gem 'sunspot_rails'
 gem 'kaminari'
 gem 'resque', :require => "resque/server"
+gem 'omniauth'
+gem 'cancan'
 
 # Use unicorn as the web server
 # gem 'unicorn'

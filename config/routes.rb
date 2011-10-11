@@ -1,4 +1,23 @@
 Meetingsapp::Application.routes.draw do
+
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  resources :users
+  resources :sessions
+
+  resources :rooms do
+    resources :invitations
+  end
+
+  resources :authentications, :only => [:index, :create, :destroy]
+  match '/auth/:provider/callback' => 'authentications#create'
+
+  root :to => 'rooms#index'
+
+  # TODO Auth this url
+  mount Resque::Server, :at => "/resque"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

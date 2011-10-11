@@ -4,7 +4,10 @@ class RoomsController < ApplicationController
   before_filter :authenticate_user!
 
   expose(:rooms) { current_user.rooms.page params[:page] }
-  expose(:room)
+  expose(:room) {
+    # TODO Security!
+    Room.fetch(params[:id])
+  }
 
   def index
     respond_with rooms

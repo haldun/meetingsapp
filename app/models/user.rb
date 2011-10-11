@@ -27,4 +27,10 @@ class User < ActiveRecord::Base
     self.password = self.password_confirmation = SecureRandom.urlsafe_base64
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
+
+  def self.fetch_by_auth_token(auth_token)
+    Rails.cache.fetch "users/token/#{auth_token}" do
+      find_by_auth_token(auth_token)
+    end
+  end
 end

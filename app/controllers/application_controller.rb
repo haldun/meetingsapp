@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   layout :application_layout
 
   def current_user
-    @current_user ||= User.find_by_auth_token(cookies.signed[:auth_token]) if cookies[:auth_token]
+    @current_user ||= User.fetch_by_auth_token(cookies.signed[:auth_token]) if cookies[:auth_token]
   end
 
   def authenticate_user!

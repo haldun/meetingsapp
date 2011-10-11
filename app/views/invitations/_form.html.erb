@@ -1,0 +1,16 @@
+<%= simple_form_for(@invitation) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :user %>
+    <%= f.association :room %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :status %>
+    <%= f.input :token %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

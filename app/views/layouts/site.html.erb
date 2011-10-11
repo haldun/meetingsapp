@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>meetings</title>
+  <%= stylesheet_link_tag(
+    "http://twitter.github.com/bootstrap/assets/css/bootstrap-1.2.0.min.css",
+    "http://fonts.googleapis.com/css?family=Open+Sans",
+    "application"
+    ) %>
+
+  <script>
+  window._gaq = window._gaq || [];
+  _gaq.push(['_setAccount', 'UA-25788038-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <meta name="google-site-verification" content="pIVsLi9FQg1ET9O2MHcrIsL56uf1NfhppBlE-YSF2PQ" />
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller_name %>">
+  <%= yield %>
+  <%= javascript_include_tag(
+    "//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js",
+    "application"
+  ) %>
+  <%= javascript_include_tag "http://cdn.pubnub.com/pubnub-3.1.min.js" %>
+</body>
+</html>

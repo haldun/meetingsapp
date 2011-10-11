@@ -1,0 +1,21 @@
+#text_content{width:100%;height:60px;}
+#messages .user{width:20%}
+.room-heading{position:fixed;top:40px;height:90px;background:#fff;margin:0;padding:0;}
+.room-heading h3{margin-bottom:10px;}
+.sidebar{position:fixed;}
+.sidebar ul li {}
+.sidebar a{display:block;line-height:22px;background-position:3px center;text-decoration:none;padding:5px 5px 5px 20px;background-repeat:no-repeat;}
+.sidebar a:hover{background-color:#F2F2F2;}
+.sidebar a.active{color:#D62899}
+#room-users li{padding:5px}
+.heading{position:fixed;height:40px;width:100%;background:#fff;top:40px}
+#room-menu a{background-image:url(../images/sprite.png)}
+#room-menu a:hover{background-image:url(../images/sprite-hover.png)}
+#room-menu a.messages{background-position: -7px 0px}
+#room-menu a.files{background-position: -7px -32px}
+#room-menu a.transcripts{background-position: -7px -64px}
+#room-menu a.members{background-position: -7px -96px}
+#room-menu a.invitations{background-position: -7px -96px}
+#room-menu a.settings{background-position: -7px -96px}
+#room-menu a.leave{background-position: -7px -128px}
+#room-users li{display:block;line-height:22px;background-position:-7px -160px;text-decoration:none;padding:5px 5px 5px 20px;background-repeat:no-repeat;background-image:url(../images/sprite.png);}

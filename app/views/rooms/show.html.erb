@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%= room.name %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= room.topic %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= room.owner %>
+</p>
+
+<p>
+  <b>Admins:</b>
+  <%= room.admins.map(&:name).join ', ' %>
+</p>
+
+<p>
+  <b>Members:</b>
+  <%= room.members.map(&:name).join ', ' %>
+</p>
+
+<p>
+  <b>Token:</b>
+  <%= room.token %>
+</p>
+
+
+<%= link_to 'Edit', edit_room_path(room) %> |
+<%= link_to 'Back', rooms_path %>

@@ -4,10 +4,7 @@ class RoomsController < ApplicationController
   before_filter :authenticate_user!
 
   expose(:rooms) { current_user.rooms.page params[:page] }
-  expose(:room) {
-    # TODO Security!
-    Room.fetch(params[:id])
-  }
+  expose(:room)
 
   def index
     respond_with rooms
@@ -44,5 +41,11 @@ class RoomsController < ApplicationController
   def destroy
     room.destroy
     respond_with room
+  end
+
+  layout :set_layout
+
+  def set_layout
+    request.headers['X-PJAX'].present? ? false : 'application'
   end
 end

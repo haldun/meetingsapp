@@ -1,0 +1,10 @@
+<table id="messages" class="zebra-striped">
+  <tbody>
+    <%- messages.each do |message| %>
+      <tr class="message">
+        <td class="user"><%= message.author %></td>
+        <td><%= message.content %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>

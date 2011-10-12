@@ -1,0 +1,62 @@
+<%= content_for :content do %>
+<div class="heading container-fluid">
+  <h2><%= room %> <small id="topic"><%= room.topic %></small></h2>
+</div>
+
+<div class="container-fluid">
+  <div class="sidebar">
+    <ul class="unstyled" id="room-menu">
+      <li><%= link_to "Messages", room_messages_path(room), class: 'messages' %></li>
+      <li><a href="{{ reverse_url('files', room._id) }}" class="files">Files</a></li>
+      <li><a href="{{ reverse_url('transcripts', room._id) }}" class="transcripts">Transcripts</a></li>
+        <li><a href="{{ reverse_url('members', room._id) }}" class="members">Members</a></li>
+        <li><%= link_to "Invitations", room_invitations_path(room), class: 'invitations' %></li>
+        <li><%= link_to "Settings", edit_room_path(room), class: "settings" %></li>
+      <li><a href="{{ reverse_url('leave_room', room._id) }}" class="leave">Leave</a></li>
+    </ul>
+    <h4>Who's here?</h4>
+    <ul class="unstyled" id="room-users">
+      <% room.online_users.each do |user| %>
+        <%= content_tag_for :li, user do %><%= user %><% end -%>
+      <% end -%>
+    </ul>
+  </div>
+  <div class="content" id="content">
+    <%= yield %>
+  </div>
+</div>
+
+<div id="footer">
+  <div id="footer-content" class="container-fluid">
+    <div class="sidebar">
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="span12">
+          <form action="{{ reverse_url('new_message', room._id) }}" method="post" id="new_message">
+            <textarea id="text_content" name="content"
+                      placeholder="Type your message or drop your files here and hit enter..."></textarea>
+          </form>
+        </div>
+        <div class="span2">
+          <div id="upload_container">
+            <!--<div id="filedrop" style="border:1px solid red; padding:10px">
+              Drop files here
+            </div>-->
+            <div id="filelist"></div>
+            <div id="upload_buttons" style="display:none">
+              <a href="#" id="select_files" class="btn" style="display:none">Select files</a>
+              <a href="#" id="upload" class="btn primary">Upload files</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <audio id="snd_new" src="/static/sounds/New.mp3"></audio>
+<audio id="snd_off" src="/static/sounds/Off.mp3"></audio>
+<audio id="snd_on" src="/static/sounds/On.mp3"></audio> -->
+<% end -%>
+<%= render :template => 'layouts/application' %>

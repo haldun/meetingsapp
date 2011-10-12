@@ -2,7 +2,7 @@ require 'test_helper'
 
 class InvitationsControllerTest < ActionController::TestCase
   setup do
-    @invitation = invitations(:one)
+    invitation = invitations(:one)
   end
 
   test "should get index" do
@@ -18,30 +18,30 @@ class InvitationsControllerTest < ActionController::TestCase
 
   test "should create invitation" do
     assert_difference('Invitation.count') do
-      post :create, invitation: @invitation.attributes
+      post :create, invitation: invitation.attributes
     end
 
     assert_redirected_to invitation_path(assigns(:invitation))
   end
 
   test "should show invitation" do
-    get :show, id: @invitation.to_param
+    get :show, id: invitation.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @invitation.to_param
+    get :edit, id: invitation.to_param
     assert_response :success
   end
 
   test "should update invitation" do
-    put :update, id: @invitation.to_param, invitation: @invitation.attributes
+    put :update, id: invitation.to_param, invitation: invitation.attributes
     assert_redirected_to invitation_path(assigns(:invitation))
   end
 
   test "should destroy invitation" do
     assert_difference('Invitation.count', -1) do
-      delete :destroy, id: @invitation.to_param
+      delete :destroy, id: invitation.to_param
     end
 
     assert_redirected_to invitations_path

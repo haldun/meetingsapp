@@ -1,3 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+# Pjax links for room sidebar menu
+$ ->
+  $('#room-menu a:not(.leave)').pjax('#content').live 'click', () ->
+    $('#room-menu a').removeClass('active')
+    $(this).addClass('active')
+    false

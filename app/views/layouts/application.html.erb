@@ -42,11 +42,15 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="content">
-    <%= yield %>
+<% if content_for? :content %>
+  <%= yield :content %>
+<% else %>
+  <div class="container">
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
-</div>
+<% end -%>
 
 <%= javascript_include_tag "//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js" %>
 <%= javascript_include_tag "//cdn.pubnub.com/pubnub-3.1.min.js" %>

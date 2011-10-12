@@ -12,4 +12,5 @@
 //= require bootstrap/bootstrap-popover
 //= require bootstrap/bootstrap-scrollspy
 //= require bootstrap/bootstrap-tabs
+//= require jquery.pjax
 //= require_tree .

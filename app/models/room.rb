@@ -7,6 +7,7 @@ class Room < ActiveRecord::Base
                     :conditions => 'memberships.role = "admin"'
   has_many :members, :through => :memberships, :class_name => "User", :source => :user
   has_many :invitations, :dependent => :destroy
+  has_many :messages, :dependent => :destroy
 
   validates_presence_of :name
 
@@ -28,6 +29,10 @@ class Room < ActiveRecord::Base
     @online_users = nil
   end
 
+  def online_users_count
+    REDIS.zcount(redis_key(:online_users), 0, Time.now.utc.to_f)
+  end
+
   def online_users
     # TODO Query does not preserve the order in redis, so we need to order
     # the returned users row set.
@@ -39,6 +44,10 @@ class Room < ActiveRecord::Base
 
   def redis_key(prefix)
     "rooms/#{self.id}/#{prefix}"
+  end
+
+  def to_s
+    name
   end
 
   memoize :redis_key

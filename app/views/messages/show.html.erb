@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Room:</b>
+  <%= message.room %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= message.author %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= message.type %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= message.content %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(message) %> |
+<%= link_to 'Back', messages_path %>

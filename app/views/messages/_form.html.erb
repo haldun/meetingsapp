@@ -1,0 +1,14 @@
+<%= simple_form_for([room, message]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.association :room %>
+    <%= f.association :author %>
+    <%= f.input :type %>
+    <%= f.input :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

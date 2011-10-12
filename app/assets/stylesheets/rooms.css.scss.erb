@@ -9,8 +9,8 @@
 .sidebar a.active{color:#D62899}
 #room-users li{padding:5px}
 .heading{position:fixed;height:40px;width:100%;background:#fff;top:40px}
-#room-menu a{background-image:url(../images/sprite.png)}
-#room-menu a:hover{background-image:url(../images/sprite-hover.png)}
+#room-menu a{background-image:url(<%= image_path 'sprite.png' %>)}
+#room-menu a:hover{background-image:url(<%= image_path 'sprite-hover.png' %>)}
 #room-menu a.messages{background-position: -7px 0px}
 #room-menu a.files{background-position: -7px -32px}
 #room-menu a.transcripts{background-position: -7px -64px}
@@ -19,3 +19,16 @@
 #room-menu a.settings{background-position: -7px -96px}
 #room-menu a.leave{background-position: -7px -128px}
 #room-users li{display:block;line-height:22px;background-position:-7px -160px;text-decoration:none;padding:5px 5px 5px 20px;background-repeat:no-repeat;background-image:url(../images/sprite.png);}
+
+table.rooms {
+  border: none;
+  td {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #DCDCDC;
+  }
+  td.row-actions {
+    padding-top: 22px;
+  }
+}

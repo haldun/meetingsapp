@@ -10,7 +10,7 @@ class Room < ActiveRecord::Base
 
   validates_presence_of :name
 
-  before_create { generate_token(:token) }
+  before_create { self.token = SecureRandom.urlsafe_base64(32) }
   after_save { Rails.cache.write("rooms/#{id}", self) }
   after_destroy { Rails.cache.delete("rooms/#{id}") }
 
@@ -18,23 +18,21 @@ class Room < ActiveRecord::Base
     Rails.cache.fetch("rooms/#{id}") { find(id) }
   end
 
-  def generate_token(column)
-    begin
-      self[column] = SecureRandom.urlsafe_base64(32)
-    end while Room.exists?(column => self[column])
-  end
-
   def join!(user)
-    REDIS.zadd(redis_key(:online_users), user.id, Time.now.utc)
+    REDIS.zadd(redis_key(:online_users), Time.now.utc.to_f, user.id)
+    @online_users = nil
   end
 
   def leave!(user)
-    REDIS.srem(redis_key(:online_users), user.id)
+    REDIS.zrem(redis_key(:online_users), user.id)
+    @online_users = nil
   end
 
   def online_users
+    # TODO Query does not preserve the order in redis, so we need to order
+    # the returned users row set.
     @online_users ||= begin
-      user_ids = REDIS.smembers(redis_key(:online_users))
+      user_ids = REDIS.zrangebyscore(redis_key(:online_users), 0, Time.now.utc.to_f)
       user_ids.present? ? User.where(:id => user_ids) : []
     end
   end
